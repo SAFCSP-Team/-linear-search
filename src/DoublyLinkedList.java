@@ -1,58 +1,33 @@
-public class DoublyLinkedList {
- Node head;
 
- public void insert(int data) {
-    Node Node = new Node(data);
-     if (head == null) {
-         head = Node;
-   } else {
-    Node current = head;
-      while (current.next != null) {
-        current = current.next;
-          }
-          Node.previous = current;
-          current.next = Node;
-        }
-    }
+class DoublyLinkedList {
+    Node head;
 
-    public void delete(int data) {
+    public void append(int data) {
+        Node newNode = new Node(data);
         if (head == null) {
+            head = newNode;
             return;
         }
-   Node current = head;
-     while (current != null) {
-       if (current.data == data) {
-        if (current.previous == null) {
-            /*  Node to delete is the head node */
-               head = current.next;
-               if (head != null) {
-                head.previous = null;
-                    }
-                } else {
-                    /* Node to delete is not the head node */
-                    current.previous.next = current.next;
-                    if (current.next != null) {
-                        current.next.previous = current.previous;
-                    }
-                }
-                break;
+        Node last = head;
+        while (last.next != null) {
+            last = last.next;
+        }
+        last.next = newNode;
+        newNode.prev = last;
+    }
+
+    public void linearSearch(int target) {
+        Node current = head;
+        int iterations = 0;
+        while (current != null) {
+            iterations++;
+            if (current.data == target) {
+                System.out.println("Value" + target + "found after" + iterations + "iterations");
+                return;
             }
             current = current.next;
         }
+        System.out.println("Value" + target + "not found after" + iterations + "terations");
     }
-
-    public void display() {
-        Node current = head;
-        while (current != null) {
-            System.out.print(current.data + " ");
-            current = current.next;
-        }
-        System.out.println();
-    }
-    public void linearSearch(int target) {
-          /*add your code here*/
-   }
 }
-
-
 
