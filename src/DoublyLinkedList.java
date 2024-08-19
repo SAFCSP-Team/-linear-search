@@ -1,6 +1,8 @@
 public class DoublyLinkedList {
  Node head;
-
+public DoublyLinkedList(){
+    this.head = null;
+}
  public void insert(int data) {
     Node Node = new Node(data);
      if (head == null) {
@@ -49,10 +51,21 @@ public class DoublyLinkedList {
         }
         System.out.println();
     }
-    public void linearSearch(int target) {
-          /*add your code here*/
+    public int[] linearSearch(int target) {
+        int[] sampel = {-1, 0};
+          Node current = head;
+          int x = 0;
+          while(current != null){
+            if(current.data == target){
+                sampel[0] = x;
+                sampel[1] = x+1; 
+            }
+            sampel[1] = x+1;
+            x =+1;
+            current = current.next;
+
+          }return sampel;
+
    }
 }
-
-
-
+ 
